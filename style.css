@@ -6,7 +6,10 @@
   border-radius: 6px;
   cursor: pointer;
   position: absolute;
+  top:45%;
+  left:45%;
   display: block;
+  -webkit-transition: all 1s;
 }
 
 .btn:hover{
