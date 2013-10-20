@@ -4,7 +4,7 @@ $(function(){
   colors = ['#123','#234','...'],
   selected = null,
   rnd = function(min,max){
-
+    return  Math.floor(math.random()*(max-min+1)+min);
   },
   setColors = function(){
 
