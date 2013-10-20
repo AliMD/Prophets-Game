@@ -14,7 +14,12 @@ $(function(){
       });
     },
     exploid = function(){
-      
+      $btns.each(function(){
+        $(this).css({
+          left : rnd(0,90) + '%',
+          top : rnd(0,90) + '%'
+        });
+      });
     },
     choose1 = function(){
 
