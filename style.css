@@ -15,3 +15,11 @@
 .btn:hover{
   background-color: #321;
 }
+
+#Start{
+  padding: 12px 35px;
+  top:44%;
+  left:44%;
+  font-size: 34px;
+  z-index: 3;
+}

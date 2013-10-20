@@ -1,7 +1,7 @@
 $(function(){
   var
     $btns = $('.btn'),
-    colors = ['#1ABC9C','#2ECC71','#3498DB','#34495E','#9B59B6','#F1C40F','#E67E22','#E74C3C','#7F8C8D','#2980B9','#95A5A6','#C0392B','#D35400','#F39C12','#666'],
+    colors = ['#16A085','#2ECC71','#2980B9','#9B59B6','#2C3E50','#F39C12','#D35400','#E74C3C','#973449','#FF385D','#C0392B','#7F8C8D','#D35400','#973449','#9DC500'],
     selected = null,
     rnd = function(min,max){
       return  Math.floor(Math.random()*(max-min+1)+min);
