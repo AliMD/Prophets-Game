@@ -7,7 +7,11 @@ $(function(){
       return  Math.floor(Math.random()*(max-min+1)+min);
     },
     setColors = function(){
-
+      $btns.each(function(){
+        $(this).css({
+          'background-color': colors[rnd(0,14)]
+        });
+      });
     },
     exploid = function(){
       
