@@ -18,10 +18,8 @@
   -webkit-box-shadow: 0 0 10px 0 gray;
 }
 
-#Start{
+#start{
   padding: 12px 35px;
-  top:44%;
-  left:44%;
   font-size: 34px;
   z-index: 3;
 }
