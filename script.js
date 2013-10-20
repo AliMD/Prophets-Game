@@ -18,12 +18,16 @@ $(function(){
     });
   },
   exploid = function(){
-    $btns.each(function(){
-      $(this).animate({
-        left : rnd(0, 90) + '%',
-        top : rnd(0, 90) + '%'
-      }, 400);
-    });
+    var i,delay = 1;
+    for(i=$btns.length-1; i>=0; i--){
+      setTimeout(function(i){
+        $btns.eq(i).animate({
+          left : rnd(0, 90) + '%',
+          top : rnd(0, 90) + '%'
+        }, 400);
+      },delay,i);
+      delay+=100;
+    }
   },
   choose1 = function(){
 
@@ -31,6 +35,7 @@ $(function(){
   start = function(){
     exploid();
     $btns.click(choose1);
+    $start.hide();
   },
   reset = function(){
     window.location.reload(); // cheap as posible !
