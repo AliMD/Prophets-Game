@@ -1,13 +1,22 @@
 $(function(){
   var
+  winCount = 3,
+  autoMoveTime = 2000,
+  moveAnimateDue = 350,
+  exploidDelay = 50,
+  hoverWait = 400,
   sw = window.innerWidth,
   sh = window.innerHeight,
   $start = $('#start'),
+  $win = $('#win'),
+  $loose = $('#loose'),
   $btns = $('.btns .btn'),
   $selected = false,
-  winCount = 3,
-  iv=0,
-  colors = ['#16A085','#2ECC71','#2980B9','#9B59B6','#2C3E50','#F39C12','#D35400','#E74C3C','#973449','#FF385D','#C0392B','#7F8C8D','#D35400','#973449','#9DC500'],
+  hoverMoveTimerId=0,
+  autoMoveIv=0,
+  colors = ['#16A085', '#2ECC71', '#2980B9', '#9B59B6', '#2C3E50',
+            '#F39C12', '#D35400', '#E74C3C', '#973449', '#FF385D',
+            '#C0392B', '#7F8C8D', '#D35400', '#973449', '#9DC500'],
   rnd = function(min, max){
     return  Math.floor(Math.random()*(max-min+1)+min);
   },
@@ -18,7 +27,12 @@ $(function(){
     $btn.animate({
       left : rnd(0, sw-$btn.width()),
       top : rnd(0, sh-$btn.height())
-    }, 250);
+    }, moveAnimateDue, 'ease-out');
+  },
+  randAutoMove = function(){
+    autoMoveIv = setInterval(function(){
+      randMove($btns.eq(rnd(0,$btns.length-1)));
+    },autoMoveTime);
   },
   setColors = function(){
     $btns.each(function(){
@@ -31,23 +45,24 @@ $(function(){
     var i,delay = 1;
     for(i=$btns.length-1; i>=0; i--){
       setTimeout(randMove, delay, $btns.eq(i));
-      delay+=20;
+      delay+=exploidDelay;
     }
   },
   choose1 = function(){
     var $this = $(this);
-    if(iv) clearTimeout(iv);
+    $this.addClass('active');
+    hoverMoveTimerId && clearTimeout(hoverMoveTimerId);
     if(!$selected){
-      $selected = $this.addClass('active');
+      $selected = $this;
     }else{
       if($this.html()==$selected.html()){
         $selected.removeClass('active'); // cancel
+        randMove($selected);
       }else if($this.data('match')==$selected.data('match')){
         $this.addClass('remove');
         $selected.addClass('remove');
         --winCount || win();
       }else{
-        $selected.removeClass('active');
         end();
       }
       $selected = false;
@@ -56,24 +71,28 @@ $(function(){
   hover = function(){
     var $this = $(this);
     if(!$this.hasClass('active'))
-      iv = setTimeout(randMove, 300, $this);
-  },
-  start = function(){
-    exploid();
-    $btns.click(choose1);
-    $btns.mouseover(hover);
-    $start.hide();
+      hoverMoveTimerId = setTimeout(randMove, hoverWait, $this);
   },
   reset = function(){
     window.location.reload(); // cheap as posible !
   },
   end = function(){
-    alert('loooooooooose !');
-    reset();
+    $loose.removeClass('remove');
+    $btns.addClass('remove');
   },
   win = function(){
-    alert('Win !');
-    reset();
+    $win.removeClass('remove');
+    $btns.addClass('remove');
+  },
+  start = function(){
+    exploid();
+    randAutoMove();
+
+    $start.addClass('remove');
+    $btns.mouseover(hover);
+    $btns.click(choose1);
+    $loose.click(reset);
+    $win.click(reset);
   },
   init = function(){
     $start.click(start);
