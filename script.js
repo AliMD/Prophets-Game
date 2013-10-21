@@ -41,8 +41,8 @@ $(function(){
       $selected = $this.addClass('active');
     }else{
       if($this.html()!=$selected.html() && $this.data('match')==$selected.data('match')){
-        $this.hide();
-        $selected.hide();
+        $this.addClass('remove');
+        $selected.addClass('remove');
         --winCount || win();
       }else{
         $selected.removeClass('active');
