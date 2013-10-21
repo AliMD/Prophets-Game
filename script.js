@@ -40,7 +40,9 @@ $(function(){
     if(!$selected){
       $selected = $this.addClass('active');
     }else{
-      if($this.html()!=$selected.html() && $this.data('match')==$selected.data('match')){
+      if($this.html()==$selected.html()){
+        $selected.removeClass('active'); // cancel
+      }else if($this.data('match')==$selected.data('match')){
         $this.addClass('remove');
         $selected.addClass('remove');
         --winCount || win();
