@@ -1,3 +1,11 @@
+@font-face{font-family:'droidnaskh';font-style:normal;font-weight:700;src:url("fonts/droidnaskhbold.eot");src:local('Droid Arabic Naskh'),url("fonts/droidnaskhbold.eot") format('embedded-opentype'),url("fonts/droidnaskhbold.woff") format('woff'),url("fonts/droidnaskhbold.ttf") format('truetype')}
+@font-face{font-family:'droidnaskh';font-style:normal;font-weight:400;src:url("fonts/droidnaskh.eot");src:local('Droid Arabic Naskh'),url("fonts/droidnaskh.eot") format('embedded-opentype'),url("fonts/droidnaskh.woff") format('woff'),url("fonts/droidnaskh.ttf") format('truetype')}
+
+body{
+  font-family: 'droidnaskh';
+  background-image: url('bg.png');
+}
+
 .btn{
   background-color: #34495E;
   font-size: 24px;
