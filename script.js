@@ -1,5 +1,7 @@
 $(function(){
   var
+  sw = window.innerWidth,
+  sh = window.innerHeight,
   $start = $('#start'),
   $btns = $('.btns .btn'),
   $selected = false,
@@ -14,8 +16,8 @@ $(function(){
   },
   randMove = function($btn){
     $btn.animate({
-      left : rnd(0, 90) + '%',
-      top : rnd(0, 90) + '%'
+      left : rnd(0, sw-$btn.width()),
+      top : rnd(0, sh-$btn.height())
     }, 250);
   },
   setColors = function(){
@@ -50,7 +52,9 @@ $(function(){
     }
   },
   hover = function(){
-    iv = setTimeout(randMove, 300, $(this));
+    var $this = $(this);
+    if(!$this.hasClass('active'))
+      iv = setTimeout(randMove, 300, $this);
   },
   start = function(){
     exploid();
