@@ -20,11 +20,16 @@ body{
   -webkit-transition: -webkit-filter 0.3s, -webkit-box-shadow 0.2s;
 }
 
-.btn:hover,
-.btn.active{
+.btn:hover{
   -webkit-filter: brightness(1.3);
   z-index: 2;
   -webkit-box-shadow: 0 0 10px 0 gray;
+}
+
+.btn.active{
+  z-index: 2;
+  -webkit-box-shadow: 0 0 10px 0 gray;
+  -webkit-filter: brightness(2);
 }
 
 #start{
