@@ -35,12 +35,12 @@ body{
   opacity: 0;
   top:45% !important;
   left:45% !important;
-  -webkit-transform: scale(5);
-  -webkit-transition: all 0.7s;
+  -webkit-transition: all 0.7s cubic-bezier(.07,.57,1,2.79);
 }
 
 #start{
-  padding: 12px 35px;
+  margin: -5px 0 0 -4px;
+  padding: 15px 50px;
   font-size: 34px;
   z-index: 3;
 }
